@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('servico', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('nome', 100)->nullable();
             $table->string('descricao', 255)->nullable();
             $table->decimal('valor', 10, 2)->nullable();

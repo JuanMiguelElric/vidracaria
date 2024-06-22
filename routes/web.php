@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Cliente\ClienteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('cliente',ClienteController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
+    return to_route('cliente.index');
+});
+
 
 Auth::routes();
 

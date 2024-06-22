@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('fornecedor', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('nome', 60);
             $table->char('cnpj', 20);
             $table->integer('endereco')->unsigned();

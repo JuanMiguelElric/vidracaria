@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('produto', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('nome', 50);
             $table->integer('fornecedor')->unsigned();
             $table->string('descricao', 100);
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('fornecedor')->references('UniqueID')->on('fornecedor');
         });
         Schema::create('orcamento', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->integer('cliente')->unsigned();
             $table->integer('produto')->unsigned()->nullable();
             $table->char('formaPagamento', 8);

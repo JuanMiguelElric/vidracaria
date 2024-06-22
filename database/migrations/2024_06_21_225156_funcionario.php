@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('funcionario', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('nome', 100)->nullable();
             $table->date('dataNascimento')->nullable();
             $table->string('cpf', 14)->unique()->nullable();

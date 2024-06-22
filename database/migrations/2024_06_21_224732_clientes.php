@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('numero', 20);
             $table->char('estado', 2);
             $table->string('cidade', 50);
+            $table->string('complemento',255);
             $table->timestamps();
         });
         Schema::create('cliente', function (Blueprint $table) {
@@ -28,7 +29,7 @@ return new class extends Migration
             $table->integer('endereco')->unsigned();
             $table->string('telefone', 14);
             $table->string('email', 30)->nullable();
-            $table->enum('status', ['ativo', 'inativo'])->default('ativo');
+            $table->enum('status', ['ativo', 'inativo'])->default('ativo')->nullable();
             $table->timestamps();
 
             $table->foreign('endereco')->references('UniqueID')->on('endereco');
