@@ -51,6 +51,11 @@ class FuncionarioController extends Controller
             }
         }
     }
+    public function edit(Funcionario $funcionario){
+        $endereco = Endereco::findOrFail($funcionario->endereco);
+
+        return view('funcionario.edit',compact(['funcionario','endereco']));
+    }
 
     /**
      * Display the specified resource.
@@ -65,7 +70,25 @@ class FuncionarioController extends Controller
      */
     public function update(Request $request, Funcionario $funcionario)
     {
-        //
+        $data = $request->validate([
+            'nome'=>'required|string',
+            'dataNascimento'=>'required|string',
+            'cpf'=>'required|string',
+            'telefone'=>'required|string',
+            'email'=>'required|string',
+            'funcao'=>'required|string'
+        ]);
+        $dataEndereco = $request->validate(
+            ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
+        );
+        $endereco = Endereco::findOrFail($funcionario->endereco);
+        if($funcionario->update($data)){
+            if($endereco->update($dataEndereco)){
+                return redirect()->route('funcionario.index');
+            }
+
+        }
+        
     }
 
     /**
