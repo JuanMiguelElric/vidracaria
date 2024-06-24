@@ -3,6 +3,7 @@
 use App\Http\Controllers\Cliente\ClienteController;
 use App\Http\Controllers\Fornecedor\FornecedorController;
 use App\Http\Controllers\Funcionario\FuncionarioController;
+use App\Http\Controllers\Produto\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,9 @@ Route::resource('fornecedor',FornecedorController::class)->only(['index','create
 });
 Route::resource('funcionario',FuncionarioController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('funcionario.index');
+});
+Route::resource('produto',ProdutoController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
+    return to_route('produto.index');
 });
 
 
