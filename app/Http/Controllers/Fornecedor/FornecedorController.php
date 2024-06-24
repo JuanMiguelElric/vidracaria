@@ -39,4 +39,47 @@ class FornecedorController extends Controller
             }
         }
     }
+    public function edit(Fornecedor $fornecedor){
+        $endereco = Endereco::findOrFail($fornecedor->endereco);
+
+        return view('fornecedor.edit',compact(['fornecedor','endereco']));
+    }
+    public function update(Request $request, Fornecedor $fornecedor){
+        $data = $request->validate([
+            'nome'=>'required|string',
+            'cnpj'=>'required|string',
+            'telefone'=>'required|string',
+            'email'=>'required|string'
+            
+        ]);
+        $dataEndereco = $request->validate(
+            ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
+        );
+        $endereco = Endereco::findOrFail($fornecedor->endereco);
+        if($fornecedor->update($data)){
+            if($endereco->update($dataEndereco)){
+                return redirect()->route('fornecedor.index');
+            }
+        }
+
+    }
+    public function Destroy(Request $request,Fornecedor $fornecedor){
+        $data = $request->validate([
+            'nome'=>'required|string',
+            'cnpj'=>'required|string',
+            'telefone'=>'required|string',
+            'email'=>'required|string'
+            
+        ]);
+        $dataEndereco = $request->validate(
+            ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
+        );
+        $endereco = Endereco::findOrFail($fornecedor->endereco);
+
+        if($fornecedor->destroy($data)){
+            if($endereco->destroy($dataEndereco)){
+                return redirect()->route('fornecedor.index');
+            }
+        }
+    }
 }
