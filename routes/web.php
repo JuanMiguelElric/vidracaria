@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Cliente\ClienteController;
+use App\Http\Controllers\Fornecedor\FornecedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('cliente',ClienteController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('cliente.index');
+});
+Route::resource('fornecedor',FornecedorController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
+    return to_route('fornecedor.index');
 });
 
 
