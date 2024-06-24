@@ -55,13 +55,39 @@ class ProdutoController extends Controller
     {
         //
     }
+    public function edit(Produto $produto)
+    {
+        $fornecedor = Fornecedor::all();
+        $fornecedorEscolhido = Fornecedor::findOrFail($produto->fornecedor);
+        return view('produto.edit',compact(['fornecedor','produto','fornecedorEscolhido']));
+
+    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        $data = $request->validate([
+
+            'nome'=>'required|string',
+            'fornecedor'=>'required|integer',
+            'descricao'=>'required|string',
+            'categoria'=>'required|string',
+            'dataCompra'=>'required|date',
+            'qtdProduto'=>'required|integer',
+    
+            'unidadeMedida'=>'required|string',
+            'preco'=>'required|numeric',
+        ]);
+
+        if($produto->update($data)){
+            if($request->json ==1)
+            {
+                return response()->json(["type"=>"success","message"=>"produto editado com sucesso"]);
+            }
+            return redirect()->route('produto.index');
+        }
     }
 
     /**
@@ -69,6 +95,10 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+ 
+        if($produto->delete()){
+            return redirect()->route('produto.index');
+        }
+        
     }
 }
