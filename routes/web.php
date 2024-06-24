@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Cliente\ClienteController;
 use App\Http\Controllers\Fornecedor\FornecedorController;
+use App\Http\Controllers\Funcionario\FuncionarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,9 @@ Route::resource('cliente',ClienteController::class)->only(['index','create','sto
 });
 Route::resource('fornecedor',FornecedorController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('fornecedor.index');
+});
+Route::resource('funcionario',FuncionarioController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
+    return to_route('funcionario.index');
 });
 
 
