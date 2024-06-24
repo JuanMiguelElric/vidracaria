@@ -82,6 +82,7 @@ class FuncionarioController extends Controller
             ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
         );
         $endereco = Endereco::findOrFail($funcionario->endereco);
+        
         if($funcionario->update($data)){
             if($endereco->update($dataEndereco)){
                 return redirect()->route('funcionario.index');
@@ -96,6 +97,12 @@ class FuncionarioController extends Controller
      */
     public function destroy(Funcionario $funcionario)
     {
-        //
+        $endereco = Endereco::findOrFail($funcionario->endereco);
+        if($funcionario->delete()){
+            if($endereco->delete()){
+                return redirect()->route('funcionario.index');
+
+            }
+        }
     }
 }
