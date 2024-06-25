@@ -14,10 +14,12 @@ class FuncionarioController extends Controller
      */
     public function index()
     {
-        //
+        $funcionario = Funcionario::all();
+        return view('funcionario.index',compact('funcionario'));
     }
     public function create()
     {
+
         return view('funcionario.create');
     }
 
@@ -95,6 +97,33 @@ class FuncionarioController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+     public function funcionarioJson(){
+        $funcionarios = Funcionario::all();
+        $funcionarioList=[];
+        foreach($funcionarios as $funcionario){
+            $routeEdit = route('funcionario.edit', $funcionario->id);
+            $routeQuartos = route('funcionario.index',);
+            $routedetalhes = route('funcionario.show', $funcionario->id);
+            $btnEdit = "<a href=' $routeEdit' id='$funcionario->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
+            
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $funcionario->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            
+            $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $funcionario->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
+
+            $funcionarioList[]=[
+                'nome'=>$funcionario->nome,
+                'cargo'=>$funcionario->funcao,
+                'telefone'=>$funcionario->telefone,
+                'email'=>$funcionario->email,
+                'ativo'=>$funcionario->ativo == 0 ? "ativo" : "inativo",
+                'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
+
+            ];
+
+        }
+        return response()->json(compact('funcionarioList'));
+     }
     public function destroy(Funcionario $funcionario)
     {
         $endereco = Endereco::findOrFail($funcionario->endereco);

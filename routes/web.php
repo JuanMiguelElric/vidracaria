@@ -38,6 +38,7 @@ Route::resource('fornecedor',FornecedorController::class)->only(['index','create
 Route::resource('funcionario',FuncionarioController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('funcionario.index');
 });
+Route::get('/funcionarioJson', [FuncionarioController::class, 'funcionarioJson']);
 Route::get('/produtojson',[ProdutoController::class, 'produtoJson'])->name('produto.json');
 Route::resource('produto',ProdutoController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('produto.index');
