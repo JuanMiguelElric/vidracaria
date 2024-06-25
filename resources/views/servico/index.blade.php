@@ -50,7 +50,7 @@ $config = [
             
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text bg-dark">
-                                            <i class="fas fa-phone text-yellow"></i>
+                                            <i class="fab fa-servicestack text-yellow"></i>
                                         </div>
                                     </x-slot>
                                 </x-adminlte-input>
@@ -65,7 +65,7 @@ $config = [
             
                                     <x-slot name="prependSlot">
                                         <div class="input-group-text bg-dark">
-                                            <i class="fas fa-phone text-yellow"></i>
+                                            <i class="fas fa-dollar-sign text-yellow"></i>
                                         </div>
                                     </x-slot>
                                 </x-adminlte-input>
@@ -102,7 +102,7 @@ $config = [
                     </div>
                 </form>
             </x-adminlte-modal>
-            <a href="#" data-toggle="modal" data-target="#modalPurple">  <x-adminlte-button class="btn-flat " type="submit" label="Cadastrar novo Servico:" theme="success" icon="fas fa-lg fa-user"/></a>
+            <a href="#" data-toggle="modal" data-target="#modalPurple">  <x-adminlte-button class="btn-flat " type="submit" label="Cadastrar novo Serviço:" theme="success" icon="fab fa-servicestack"/></a>
         </div>
 
         <div class="col-12 mt-3">

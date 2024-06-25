@@ -142,8 +142,8 @@
           
                 <div class="col-4">
                     <div class="form-group">
-                        <x-adminlte-input name="cep" placeholder="Informe o CEP do seu cliente:"
-                        label="Informe aqui o CEP do cliente" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
+                        <x-adminlte-input name="cep" placeholder="Informe o CEP do seu Funcionario:"
+                        label="Informe aqui o CEP do Funcionario" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
                                     <i class="fas fa-city text-yellow"></i>

@@ -59,7 +59,7 @@
                     <x-adminlte-select id="correto" name="cliente" label="Selecione aqui o cliente:">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
+                                <i class="fas fa-user text-yellow"></i>
                             </div>
                         </x-slot>
                         <option value="0" selected>Selecionar</option>
@@ -78,7 +78,7 @@
                     <x-adminlte-select id="correto" name="produto" label="Selecione aqui o produto para o serviço:">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
+                                <i class="fas fa-box text-yellow"></i>
                             </div>
                         </x-slot>
                         <option value="0" selected>Selecionar</option>
@@ -97,7 +97,7 @@
                     <x-adminlte-select id="correto" name="servico" label="Selecione o serviço:">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
+                                <i class="fas fa-wrench text-yellow"></i>
                             </div>
                         </x-slot>
                         <option value="0" selected>Selecionar</option>
@@ -116,7 +116,7 @@
                     <x-adminlte-select id="correto" name="funcionario" label="Selecione o funcionário para a execução desse serviço:">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
+                                <i class="fas fa-user-tie text-yellow"></i>
                             </div>
                         </x-slot>
                         <option value="0" selected>Selecionar</option>

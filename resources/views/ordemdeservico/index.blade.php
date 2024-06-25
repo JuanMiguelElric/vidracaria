@@ -41,7 +41,7 @@ $config = [
 
         <div class="col-12 mt-3">
 
-            <x-adminlte-modal id="modalMin" title="Excluindo cliente">
+            <x-adminlte-modal id="modalMin" title="Excluindo ordem de servico">
              
 
             </x-adminlte-modal>

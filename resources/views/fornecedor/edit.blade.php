@@ -19,7 +19,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <x-adminlte-input name="nome" placeholder="Informe aqui o nome do Fornecedor"
-                    label="Informe aqui o nome do cliente" icon="fas fa-bed" value="{{ $fornecedor->nome }}" >
+                    label="Informe aqui o nome do Fornecedor" icon="fas fa-bed" value="{{ $fornecedor->nome }}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -52,7 +52,7 @@
 
             <div class="col-6">
                 <div class="form-group">
-                    <x-adminlte-input name="telefone" placeholder="Telefone do Cliente:"
+                    <x-adminlte-input name="telefone" placeholder="Telefone do Fornecedor:"
                     label="Numero do telefone do Fornecedor:(caso houver)" data-mask="(99) 9999-9999" icon="fas fa-bed" value="{{$fornecedor->telefone}}" >
 
                         <x-slot name="prependSlot">
@@ -68,7 +68,7 @@
             <div class="col-12">
                 <div class="form-group">
                     <x-adminlte-input name="email" type="email" placeholder="xxxxx@example.com"
-                    label="Informe aqui o email do cliente:(caso houver)" icon="fas fa-envelope" value="{{$fornecedor->email}}" >
+                    label="Informe aqui o email do Fornecedor:(caso houver)" icon="fas fa-envelope" value="{{$fornecedor->email}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -94,8 +94,8 @@
       
             <div class="col-4">
                 <div class="form-group">
-                    <x-adminlte-input name="cep" placeholder="Informe o CEP do seu cliente:"
-                    label="Informe aqui o CEP do cliente" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
+                    <x-adminlte-input name="cep" placeholder="Informe o CEP do seu Fornecedor:"
+                    label="Informe aqui o CEP do Fornecedor" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
                                 <i class="fas fa-city text-yellow"></i>

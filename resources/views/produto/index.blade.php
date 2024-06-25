@@ -4,7 +4,7 @@
 @section('content')
 @php
 $heads = [
-    'Nome do Cliente',
+    'Nome do produto',
     'Categoria',
     'Data da Compra',
     'QTD',
@@ -39,12 +39,12 @@ $config = [
     </div>
     <div class="row">
         <div class="col-12 mb-3">
-            <a href="{{route('produto.create')}}">  <x-adminlte-button class="btn-flat " type="submit" label="Cadastrar novo Cliente:" theme="success" icon="fas fa-lg fa-user"/></a>
+            <a href="{{route('produto.create')}}">  <x-adminlte-button class="btn-flat " type="submit" label="Cadastrar novo produto:" theme="success" icon="fas fa-lg fa-box"/></a>
         </div>
 
         <div class="col-12 mt-3">
 
-            <x-adminlte-modal id="modalMin" title="Excluindo cliente">
+            <x-adminlte-modal id="modalMin" title="Excluindo produto">
              
 
             </x-adminlte-modal>
