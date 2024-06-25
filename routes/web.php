@@ -45,6 +45,7 @@ Route::resource('produto',ProdutoController::class)->only(['index','create','sto
 Route::resource('ordemdeservico',OrdemdesericosController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('ordemdeservico.index');
 });
+Route::get('/ordemdeservicojson',[OrdemdesericosController::class,'ordemJson'])->name('ordemdeservico.json');
 Route::get('/servicolist',[ServicoController::class,'ServicoJson']);
 Route::resource('servico',ServicoController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('ordemdeservico.index');
