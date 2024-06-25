@@ -1,25 +1,25 @@
 @extends('adminlte::page')
 
-@section('content_header')
-<div class="border-bottom pb-3">
-    <h3>Sobre produto</h3>
-</div>
+@section('title', 'Criar Fornecedor')
 
-@endsection
+@section('content_header')
+    <h1>Fornecedor </h1>
+@stop
+
 @section('content')
 <div class="container p-5">
-    <x-adminlte-card title="Informações produto" theme="light" theme-mode="full" class="elevation-3 text-black"
+    <x-adminlte-card title="Fornecedor" theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
-    <form action="{{route('produto.update',$produto->id)}}" id="form" method="POST">
+    <form action="{{route('fornecedor.update',$fornecedor->id)}}" id="form" method="POST">
         @method('PUT')
         @csrf
 
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-input name="nome" disabled  placeholder="Nome do produto"
-                    label="Nome do produto:" icon="fas fa-bed" value="{{ $produto->nome }}" >
+                    <x-adminlte-input name="nome" disabled placeholder=" nome do Fornecedor"
+                    label=" nome do Fornecedor" icon="fas fa-bed" value="{{ $fornecedor->nome }}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -31,121 +31,154 @@
     
                 </div>
     
+            </div>
+            
+            <div class="col-6">
+                <div class="form-group">
+                    <x-adminlte-input name="cnpj" disabled placeholder="00.000.000-0000-00"
+                    label=" cnj do Fornecedor:" disabled data-mask="00.000.000-0000-00" value="{{ $fornecedor->cnpj }}" >
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-address-card text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+
+    
+                </div>
+    
+            </div>
+            
+
+            <div class="col-6">
+                <div class="form-group">
+                    <x-adminlte-input name="telefone" disabled placeholder="Telefone do Fornecedor:"
+                    label="Numero do telefone do Fornecedor:(caso houver)" data-mask="(99) 9999-9999" icon="fas fa-bed" value="{{$fornecedor->telefone}}" >
+
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-phone text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+
+    
+                </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-textarea name="descricao" disabled label="Descrição" rows=5 label-class="text-dark"
-                    igroup-size="sm" placeholder="Insert description...">
-                    <x-slot name="prependSlot">
-                        <div class="input-group-text bg-dark">
-                            <i class="fas fa-lg fa-file-alt text-warning"></i>
-                        </div>
-                    </x-slot>
-                    {{$produto->descricao}}
-                    </x-adminlte-textarea>
+                    <x-adminlte-input name="email" disabled type="email" placeholder="xxxxx@example.com"
+                    label=" email do Fornecedor:(caso houver)" icon="fas fa-envelope" value="{{$fornecedor->email}}" >
+
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-envelope text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
   
     
                 </div>
-    
-            </div>
-            
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-select2 name="fornecedor" disabled label="Fornecedor:" label-class="text-Dark"
-                        data-placeholder="Select an option...">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="far fa-building text-yellow"></i>
-                            </div>
-                        </x-slot>
-                       <option value="{{$fornecedorEscolhido->id}}" disabled selected>{{$fornecedorEscolhido->nome}} </option> 
-                        @foreach ($fornecedor as $fornecedo)
-                        <option value="{{$fornecedo->id}}">{{$fornecedo->nome}}</option>
-                            
-                        @endforeach
-             
-                    </x-adminlte-select2>
-
-    
-                </div>
-    
-            </div>
-            
-            
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="">Data da Compra:</label>
-                    
-                    <input type="date" class="form-control" name="dataCompra" disabled value="{{$produto->dataCompra}}" />
-                </div>
-             
             </div>
             
            
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="categoria" disabled placeholder="Categoria do produto"
-                    label="Categoria do produto:" icon="fas fa-bed" value="{{$produto->categoria }}" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-user text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-                </div>
-            </div>
            
-           
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="qtdProduto" disabled placeholder="Quantidade do produto:"
-                    label="Quantidade do produto:"  icon="fas fa-bed" value="{{$produto->qtdProduto}}" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-plus-square text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
-            
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="preco" disabled placeholder="Preço do produto:"
-                    label="Preço do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->preco}}" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-dollar-sign text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="unidadeMedida" disabled placeholder="Unidade de Medida do produto:"
-                    label="Unidade de de Medida do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->unidadeMedida}}" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fab fa-medium text-yellow"></i>
-                        
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
             
         </div>
+        <div class="row border-bottom">
+            <div class="col-12">
+                <h2>Localização:</h2>
+            </div>
+
+
+      
+            <div class="col-4">
+                <div class="form-group">
+                    <x-adminlte-input name="cep" disabled placeholder="Informe o CEP do seu Fornecedor:"
+                    label=" CEP do Fornecedor" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-city text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="form-group">
+                    <x-adminlte-input name="rua" disabled id="endereco" placeholder="Logradouro"
+                    label=" Logradouro:" icon="fas fa-bed" value="{{$endereco->rua}}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-map-marker-alt text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <x-adminlte-input name="complemento" disabled id="complemento" placeholder="Complemento"
+                    label=" complemento:" icon="fas fa-bed" value="{{ $endereco->complemento }}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-thumbtack text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <x-adminlte-input name="bairro" disabled id="bairro" placeholder="bairro"
+                    label=" bairro:" icon="fas fa-bed" value="">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-home text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <x-adminlte-input name="numero" disabled id="numero" placeholder="Nº"
+                    label=" número " icon="fas fa-bed" value="{{$endereco->numero}}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-home text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <x-adminlte-input name="estado" disabled id="estado" placeholder="Estado/UF"
+                    label=" Estado/UF:" icon="fas fa-bed" value="{{ $endereco->estado }}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-flag text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <x-adminlte-input name="cidade" disabled id="localidade" placeholder="Cidade"
+                    label="Informe aqui a cidade:" icon="fas fa-bed" value="{{ $endereco->cidade}}">
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-flag text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+                </div>
+            </div>
+        
+        
+    </div>
         <div class="col-12 p-3">
  
             <x-adminlte-button class="btn-flat float-right mr-3" type="button" label="Cancelar" id="cancelar" theme="danger" icon="fas fa-ban"/>
@@ -154,7 +187,6 @@
     </form>
     </x-adminlte-card>
 </div>
-
 @stop
 @push('js')
 <script src="{{ asset('resources/jquery.mask.js') }}"></script>
@@ -235,3 +267,5 @@
 
 
     
+
+

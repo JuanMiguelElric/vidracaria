@@ -2,25 +2,40 @@
 
 @section('content_header')
 <div class="border-bottom pb-3">
-    <h3>Cadastrar Cliente</h3>
+    <h3> Funcionário</h3>
 </div>
 
 @endsection
 @section('content')
 <div class="container p-5">
-    <x-adminlte-card title="Informações Cliente" theme="light" theme-mode="full" class="elevation-3 text-black"
+    <x-adminlte-card title="Funcionario" disabled theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
-    <form action="{{route('cliente.update',$cliente->id)}}" id="form" method="POST">
+    <form action="{{route('funcionario.update',$funcionario->id)}}" id="form" method="POST">
         @method('PUT')
-        
         @csrf
 
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-input name="nome" disabled placeholder=" nome do cliente"
-                    label=" nome do cliente" icon="fas fa-bed" value="{{ $cliente->nome }}" >
+                    <x-adminlte-input name="nome" disabled placeholder=" nome do Funcionario"
+                    label=" nome do funcionario" icon="fas fa-bed" value="{{ $funcionario->nome }}" >
+
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-user text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+  
+    
+                </div>
+    
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <x-adminlte-input name="funcao" disabled placeholder="Informe aqui a função do Funcionario"
+                    label="Informe aqui a função do Funcionario" icon="fas fa-bed" value="{{ $funcionario->funcao}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -37,7 +52,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <x-adminlte-input name="cpf" disabled placeholder="XXX.XXX.XXX-XX"
-                    label=" cpf do cliente:" data-mask="999.999.999-99" value="{{$cliente->cpf}}" >
+                    label=" cpf do funcionario:" data-mask="999.999.999-99" value="{{ $funcionario->cpf }}" >
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
                                 <i class="fas fa-address-card text-yellow"></i>
@@ -55,7 +70,7 @@
                 <div class="form-group">
                     <label for="">Data de Aniversário</label>
                     
-                    <input type="date" class="form-control" disabled name="dataNascimento" value="{{$cliente->dataNascimento}}"  />
+                    <input type="date" class="form-control" disabled name="dataNascimento" value="{{$funcionario->dataNascimento}}"  />
                 </div>
              
             </div>
@@ -69,7 +84,7 @@
                                 <i class="fas fa-heart text-yellow"></i>
                             </div>
                         </x-slot>
-                        <option value="{{$cliente->sexo}}" selected>{{$cliente->sexo}}</option>
+                        <option value="0" selected>Selecionar</option>
                         <option value="Masculino" >Masculino</option>
                         <option value="Feminino" >Feminino</option>
                         <option value="Transsexual" >Transsexual</option>
@@ -88,8 +103,8 @@
        
                 <div class="col-6">
                     <div class="form-group">
-                        <x-adminlte-input name="telefone"  disabled placeholder="Telefone do Cliente:"
-                        label="Numero do telefone do cliente:(caso houver)" data-mask="(99) 9999-9999" icon="fas fa-bed" value="{{$cliente->telefone}}" >
+                        <x-adminlte-input name="telefone" disabled placeholder="Telefone do funcionario:"
+                        label="Numero do telefone do funcionario:(caso houver)" data-mask="(99) 9999-9999" icon="fas fa-bed" value="{{$funcionario->telefone}}" >
     
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
@@ -104,7 +119,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <x-adminlte-input name="email" type="email" disabled placeholder="xxxxx@example.com"
-                        label=" email do cliente:(caso houver)" icon="fas fa-envelope" value="{{$cliente->email}}" >
+                        label=" email do funcionario:(caso houver)" icon="fas fa-envelope" value="{{$funcionario->email}}" >
     
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
@@ -122,13 +137,13 @@
                 <div class="col-12">
                     <h2>Localização:</h2>
                 </div>
-
-
+    
+    
           
                 <div class="col-4">
                     <div class="form-group">
-                        <x-adminlte-input name="cep" disabled placeholder="Informe o CEP do seu cliente:"
-                        label=" CEP do cliente" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
+                        <x-adminlte-input name="cep" disabled placeholder="Informe o CEP do seu Funcionario:"
+                        label=" CEP do Funcionario" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
                                     <i class="fas fa-city text-yellow"></i>
@@ -187,7 +202,7 @@
                 </div>
                 <div class="col-4">
                     <div class="form-group">
-                        <x-adminlte-input name="estado" disabled id="estado" placeholder="Estado/UF"
+                        <x-adminlte-input name="estado " disabled id="estado" placeholder="Estado/UF"
                         label=" Estado/UF:" icon="fas fa-bed" value="{{ $endereco->estado }}">
                             <x-slot name="prependSlot">
                                 <div class="input-group-text bg-dark">
@@ -213,7 +228,7 @@
             
         </div>
         <div class="col-12 p-3">
- 
+          
             <x-adminlte-button class="btn-flat float-right mr-3" type="button" label="Cancelar" id="cancelar" theme="danger" icon="fas fa-ban"/>
 
         </div>

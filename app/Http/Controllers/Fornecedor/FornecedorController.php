@@ -110,4 +110,10 @@ class FornecedorController extends Controller
             }
         }
     }
+
+    public function show(Fornecedor $fornecedor){
+        $endereco = Endereco::findOrFail($fornecedor->endereco);
+        return view('fornecedor.show',compact(['fornecedor','endereco']));
+
+    }
 }

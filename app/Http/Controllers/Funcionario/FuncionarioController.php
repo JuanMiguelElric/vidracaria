@@ -64,7 +64,8 @@ class FuncionarioController extends Controller
      */
     public function show(Funcionario $funcionario)
     {
-        //
+        $endereco = Endereco::findOrFail($funcionario->endereco);
+        return view('funcionario.show',compact(['funcionario','endereco']));
     }
 
     /**
