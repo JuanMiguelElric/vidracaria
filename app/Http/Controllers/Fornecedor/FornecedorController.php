@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class FornecedorController extends Controller
 {
     public function index(){
-        //
+        return view('fornecedor.index');
     }
     public function create(){
         return view('fornecedor.create');
@@ -38,6 +38,33 @@ class FornecedorController extends Controller
                 return redirect()->route('fornecedor.index');
             }
         }
+    }
+    public function fornecedorJson(){
+        $fornecedores = Fornecedor::all();
+        if($fornecedores->isEmpty()){
+            return response()->json(["type"=>"error","fornecedor"=>[]],200);
+        }
+        $fornecedoresList =[];
+        foreach($fornecedores as $fornecedor){
+            $routeEdit = route('fornecedor.edit', $fornecedor->id);
+            $routeQuartos = route('fornecedor.index',);
+            $routedetalhes = route('fornecedor.show', $fornecedor->id);
+            $btnEdit = "<a href=' $routeEdit' id='$fornecedor->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
+            
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $fornecedor->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            
+            $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $fornecedor->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
+
+            $fornecedoresList[]=[
+                'nome'=>$fornecedor->nome,
+                'cnpj'=>$fornecedor->cnpj,
+                'telefone'=>$fornecedor->telefone,
+                'email'=>$fornecedor->email,
+                'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
+
+            ];
+        }
+        return response()->json(compact('fornecedoresList'));
     }
     public function edit(Fornecedor $fornecedor){
         $endereco = Endereco::findOrFail($fornecedor->endereco);
