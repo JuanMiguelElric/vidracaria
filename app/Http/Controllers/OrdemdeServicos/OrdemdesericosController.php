@@ -49,6 +49,7 @@ class OrdemdesericosController extends Controller
                 'dataServico'=>$ordemdeservico->dataServico,
                 'prazo'=>$ordemdeservico->prazo,
                 'valor'=>$ordemdeservico->valor,
+                'ativo'=>$ordemdeservico->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
 
             ];

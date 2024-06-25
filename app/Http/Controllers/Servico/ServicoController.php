@@ -54,6 +54,7 @@ class ServicoController extends Controller
 
                 "nome"=>$servico->nome,
                 "valor"=>$servico->valor,
+                'ativo'=>$servico->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
             ];
 

@@ -8,6 +8,7 @@ $heads = [
     'Cpf',
     'Telefone',
     'email',
+    'situação',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
@@ -22,6 +23,7 @@ $config = [
         ['data'=>'cpf'],
         ['data'=>'telefone'],
         ['data'=>'email'],
+        ['data'=>'ativo'],
         ['data'=>'btna']
 ],
 
@@ -41,6 +43,7 @@ $config = [
         <div class="col-12 mt-3">
 
             <x-adminlte-modal id="modalMin" title="Excluindo cliente">
+               
              
 
             </x-adminlte-modal>

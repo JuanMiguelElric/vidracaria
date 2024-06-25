@@ -7,6 +7,7 @@ $heads = [
     'Data inicial',
     'Prazo',
     'valor',
+    'situação',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
@@ -20,6 +21,7 @@ $config = [
         ['data'=>'dataServico'],
         ['data'=>'prazo'],
         ['data'=>'valor'],
+        ['data'=>'ativo'],
         ['data'=>'btna']
 ],
 

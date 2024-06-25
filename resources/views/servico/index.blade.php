@@ -6,6 +6,7 @@
 $heads = [
     'Nome do Serviço',
     'Preço',
+    'situação',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
@@ -18,6 +19,7 @@ $config = [
     'columns'=>[
         ['data'=>'nome'],
         ['data'=>'valor'],
+        ['data'=>'ativo'],
         ['data'=>'btna']
 ],
 

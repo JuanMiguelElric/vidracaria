@@ -8,7 +8,7 @@ $heads = [
     'Cnpj   ',
     'Telefone',
     'email',
-
+    'situação',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
@@ -23,6 +23,7 @@ $config = [
         ['data'=>'cnpj'],
         ['data'=>'telefone'],
         ['data'=>'email'],
+        ['data'=>'ativo'],
         ['data'=>'btna']
 ],
 

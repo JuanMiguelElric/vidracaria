@@ -70,6 +70,7 @@ class ProdutoController extends Controller
                 'dataCompra'=>$produto->dataCompra,
                 'qtdProduto'=>$produto->qtdProduto,
                 'preco'=>$produto->preco,
+                'ativo'=>$produto->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
 
             ];

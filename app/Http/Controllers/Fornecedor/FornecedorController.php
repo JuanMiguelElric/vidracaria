@@ -60,6 +60,7 @@ class FornecedorController extends Controller
                 'cnpj'=>$fornecedor->cnpj,
                 'telefone'=>$fornecedor->telefone,
                 'email'=>$fornecedor->email,
+                'ativo'=>$fornecedor->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
 
             ];

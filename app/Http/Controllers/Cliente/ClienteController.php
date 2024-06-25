@@ -11,7 +11,8 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        return view('cliente.index');
+        $cliente = Cliente::all();
+        return view('cliente.index',compact('cliente'));
     }
     public function create(){
         return view('cliente.create');
@@ -32,12 +33,13 @@ class ClienteController extends Controller
             $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $cliente->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $cliente->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
-
+         
             $clientesList[]=[
                 'nome' => $cliente->nome,
                 'cpf'=> $cliente->cpf,
                 'telefone'=>$cliente->telefone,
                 'email'=>$cliente->email,
+                'ativo'=>$cliente->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
                 
             ];
@@ -66,7 +68,7 @@ class ClienteController extends Controller
        
             $cliente = new Cliente($data);
             if($cliente->save()){
-                return redirect()->route('cliente.create');
+                return redirect()->route('cliente.index');
             }
             
         }

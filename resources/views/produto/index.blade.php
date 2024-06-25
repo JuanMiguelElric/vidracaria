@@ -9,6 +9,7 @@ $heads = [
     'Data da Compra',
     'QTD',
     'Preço',
+    'situação',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
@@ -24,6 +25,7 @@ $config = [
         ['data'=>'dataCompra'],
         ['data'=>'qtdProduto'],
         ['data'=>'preco'],
+        ['data'=>'ativo'],
         ['data'=>'btna']
 ],
 
