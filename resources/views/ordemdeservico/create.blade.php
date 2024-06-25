@@ -40,7 +40,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <x-adminlte-input name="valor" placeholder="R$00.00:"
-                    label="Valor da conclusão:" data-mask="(99) 9999-9999" icon="fas fa-bed" value="" >
+                    label="Valor da conclusão:" data-mask="00.00" icon="fas fa-bed" value="" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">

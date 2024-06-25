@@ -301,6 +301,13 @@ return [
 
     
         [
+            'text' => 'Dashboard',
+            'url' => '/home',
+            'icon' => 'fas fa-house',
+            'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
             'text' => 'Funcionario',
             'url' => '/funcionario',
             'icon' => 'far fa-fw fa-file',

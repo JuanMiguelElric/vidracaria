@@ -98,7 +98,7 @@
             <div class="col-3">
                 <div class="form-group">
                     <x-adminlte-input name="qtdProduto" placeholder="Quantidade do produto:"
-                    label="Quantidade do produto:" data-mask="(99) 9999-9999" icon="fas fa-bed" value="" >
+                    label="Quantidade do produto:" data-mask="0000" icon="fas fa-bed" value="" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -129,7 +129,7 @@
             <div class="col-3">
                 <div class="form-group">
                     <x-adminlte-input name="unidadeMedida" placeholder="Unidade de Medida do produto:"
-                    label="Unidade de de Medida do produto" data-mask="00.00" icon="fas fa-bed" value="" >
+                    label="Unidade de de Medida do produto" icon="fas fa-bed" value="" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">

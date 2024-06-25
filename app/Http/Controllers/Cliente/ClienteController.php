@@ -98,7 +98,7 @@ class ClienteController extends Controller
          
 
             if($endereco->update($data3)){
-                return redirect()->route('cliente.create');
+                return redirect()->route('cliente.index');
             }
             
         }
@@ -117,7 +117,7 @@ class ClienteController extends Controller
         $endereco = Endereco::findOrFail($cliente->endereco);
         if($cliente->destroy($data)){
             if( $endereco->destroy($data3)){
-                return redirect()->route('cliente.create');
+                return redirect()->route('cliente.index');
 
             }
            
@@ -127,6 +127,9 @@ class ClienteController extends Controller
         }
     }
     public function show(Cliente $cliente){
+        $endereco = Endereco::findOrFail($cliente->endereco);
+
+        return view('cliente.show',compact(['cliente','endereco']));
         
     }
 }

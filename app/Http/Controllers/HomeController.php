@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cliente\Cliente;
+use App\Models\Fornecedor;
+use App\Models\Funcionario;
+use App\Models\OrdemServico;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +28,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $funcionario = Funcionario::count();
+        $produto = Produto::count();
+        $fornecedor = Fornecedor::count();
+        $cliente = Cliente::count();
+        $ordemdeservicos = OrdemServico::count();
+
+        $data = [
+            'labels' => ['Clientes cadastrados', 'Produtos', 'Fornecedores','ordem de'],
+            'data' => [$cliente, $produto, $fornecedor,$ordemdeservicos],
+        ];
+
+        return view('home',compact('funcionario','produto','fornecedor','data'));
     }
 }
