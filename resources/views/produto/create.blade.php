@@ -11,7 +11,7 @@
     <x-adminlte-card title="Registrar produto" theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
-    <form action="{{route('produto.store')}}" id="form" method="POST">
+    <form action="{{route(''produto.store'')}}" id="form" method="POST">
         @csrf
 
         <div class="row">

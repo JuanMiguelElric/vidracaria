@@ -5,6 +5,7 @@ use App\Http\Controllers\Fornecedor\FornecedorController;
 use App\Http\Controllers\Funcionario\FuncionarioController;
 use App\Http\Controllers\OrdemdeServicos\OrdemdesericosController;
 use App\Http\Controllers\Produto\ProdutoController;
+use App\Http\Controllers\Servico\ServicoController;
 use App\Models\OrdemServico;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,9 @@ Route::resource('produto',ProdutoController::class)->only(['index','create','sto
     return to_route('produto.index');
 });
 Route::resource('ordemdeservico',OrdemdesericosController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
+    return to_route('ordemdeservico.index');
+});
+Route::resource('servico',ServicoController::class)->only(['index','create','store','delete','update','edit','show','destroy'])->missing(function(){
     return to_route('ordemdeservico.index');
 });
 

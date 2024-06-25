@@ -16,20 +16,26 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        //
+        return view('servico.index');
     }
-    public function create()
-    {
-      
-        
-    }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nome'=>"required|string",
+             'valor'=>"required|numeric",
+            'descricao'=>'required|string'
+        ]);
+ 
+        $servico = new Servico($data);
+        if($servico->save()){
+            return redirect()->route('servico.index');
+        }
+
     }
 
     /**
