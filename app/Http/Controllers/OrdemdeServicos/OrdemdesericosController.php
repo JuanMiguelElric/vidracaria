@@ -114,8 +114,11 @@ class OrdemdesericosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OrdemServico $ordemServico)
+    public function destroy(OrdemServico $ordemdeservico)
     {
         //
+        if($ordemdeservico->delete()){
+            return redirect()->route('ordemdeservico.index');
+        }
     }
 }
