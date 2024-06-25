@@ -83,7 +83,9 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        //
+        $fornecedor = Fornecedor::all();
+        $fornecedorEscolhido = Fornecedor::findOrFail($produto->fornecedor);
+        return view('produto.show',compact(['fornecedor','produto','fornecedorEscolhido']));
     }
     public function edit(Produto $produto)
     {

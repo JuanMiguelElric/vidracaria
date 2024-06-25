@@ -2,13 +2,13 @@
 
 @section('content_header')
 <div class="border-bottom pb-3">
-    <h3>Editar produto</h3>
+    <h3>Sobre produto</h3>
 </div>
 
 @endsection
 @section('content')
 <div class="container p-5">
-    <x-adminlte-card title="Registrar produto" theme="light" theme-mode="full" class="elevation-3 text-black"
+    <x-adminlte-card title="Informações produto" theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
     <form action="{{route('produto.update',$produto->id)}}" id="form" method="POST">
@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-input name="nome" placeholder="Informe aqui o nome do produto"
-                    label="Informe aqui o nome do produto" icon="fas fa-bed" value="{{ $produto->nome }}" >
+                    <x-adminlte-input name="nome" disabled  placeholder="Nome do produto"
+                    label="Nome do produto:" icon="fas fa-bed" value="{{ $produto->nome }}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -34,7 +34,7 @@
             </div>
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-textarea name="descricao" label="Descrição" rows=5 label-class="text-dark"
+                    <x-adminlte-textarea name="descricao" disabled label="Descrição" rows=5 label-class="text-dark"
                     igroup-size="sm" placeholder="Insert description...">
                     <x-slot name="prependSlot">
                         <div class="input-group-text bg-dark">
@@ -51,14 +51,14 @@
             
             <div class="col-6">
                 <div class="form-group">
-                    <x-adminlte-select2 name="fornecedor" label="Fornecedor:" label-class="text-Dark"
+                    <x-adminlte-select2 name="fornecedor" disabled label="Fornecedor:" label-class="text-Dark"
                         data-placeholder="Select an option...">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
                                 <i class="far fa-building text-yellow"></i>
                             </div>
                         </x-slot>
-                       <option value="{{$fornecedorEscolhido->id}}" selected>{{$fornecedorEscolhido->nome}} </option> 
+                       <option value="{{$fornecedorEscolhido->id}}" disabled selected>{{$fornecedorEscolhido->nome}} </option> 
                         @foreach ($fornecedor as $fornecedo)
                         <option value="{{$fornecedo->id}}">{{$fornecedo->nome}}</option>
                             
@@ -76,7 +76,7 @@
                 <div class="form-group">
                     <label for="">Data da Compra:</label>
                     
-                    <input type="date" class="form-control" name="dataCompra" value="{{$produto->dataCompra}}" />
+                    <input type="date" class="form-control" name="dataCompra" disabled value="{{$produto->dataCompra}}" />
                 </div>
              
             </div>
@@ -84,7 +84,7 @@
            
             <div class="col-3">
                 <div class="form-group">
-                    <x-adminlte-input name="categoria" placeholder="Categoria do produto"
+                    <x-adminlte-input name="categoria" disabled placeholder="Categoria do produto"
                     label="Categoria do produto:" icon="fas fa-bed" value="{{$produto->categoria }}" >
 
                         <x-slot name="prependSlot">
@@ -99,7 +99,7 @@
            
             <div class="col-3">
                 <div class="form-group">
-                    <x-adminlte-input name="qtdProduto" placeholder="Quantidade do produto:"
+                    <x-adminlte-input name="qtdProduto" disabled placeholder="Quantidade do produto:"
                     label="Quantidade do produto:"  icon="fas fa-bed" value="{{$produto->qtdProduto}}" >
 
                         <x-slot name="prependSlot">
@@ -115,7 +115,7 @@
             
             <div class="col-3">
                 <div class="form-group">
-                    <x-adminlte-input name="preco" placeholder="Preço do produto:"
+                    <x-adminlte-input name="preco" disabled placeholder="Preço do produto:"
                     label="Preço do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->preco}}" >
 
                         <x-slot name="prependSlot">
@@ -130,7 +130,7 @@
             </div>
             <div class="col-3">
                 <div class="form-group">
-                    <x-adminlte-input name="unidadeMedida" placeholder="Unidade de Medida do produto:"
+                    <x-adminlte-input name="unidadeMedida" disabled placeholder="Unidade de Medida do produto:"
                     label="Unidade de de Medida do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->unidadeMedida}}" >
 
                         <x-slot name="prependSlot">
