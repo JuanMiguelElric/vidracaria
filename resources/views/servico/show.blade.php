@@ -2,50 +2,47 @@
 
 @section('content_header')
 <div class="border-bottom pb-3">
-    <h3>Cadastrar funcionario</h3>
+    <h3> Serviço</h3>
 </div>
 
 @endsection
 @section('content')
 <div class="container p-5">
-    <x-adminlte-card title="Registrar Funcionario" theme="light" theme-mode="full" class="elevation-3 text-black"
+    <x-adminlte-card title=" Serviço" theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
-    <form action="{{route('ordemdeservico.update',$ordemdeservico->id)}}" id="form" method="POST">
-        @csrf
+     <form action="{{route('servico.update',$servico->id)}}" id="form" method="POST">
         @method('PUT')
+        @csrf
 
         <div class="row">
             
             
             
 
-            
-            
             <div class="col-6">
                 <div class="form-group">
-                    <label for="">Data de inicio:</label>
-                    
-                    <input type="date" class="form-control" name="dataServico" value="{{$ordemdeservico->dataServico}}"  />
-                </div>
-             
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="">Prazo para conclusão</label>
-                    
-                    <input type="date" class="form-control" name="prazo" value="{{$ordemdeservico->prazo}}" />
-                </div>
-             
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-input name="valor" placeholder="R$00.00:"
-                    label="Valor da conclusão:" class="dinheiro" icon="fas fa-bed" value="{{$ordemdeservico->valor}}" >
+                    <x-adminlte-input name="nome" placeholder="nome do serviço"
+                    label=" nome do serviço" disabled icon="fas fa-bed" value="{{$servico->nome}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-phone text-yellow"></i>
+                                <i class="fab fa-servicestack text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+  
+    
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <x-adminlte-input name="valor" disabled placeholder="R$00.00:"
+                    label="Valor do serviço:" data-mask="99.99" icon="fas fa-bed" value="{{$servico->valor}}" >
+
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-dollar-sign text-yellow"></i>
                             </div>
                         </x-slot>
                     </x-adminlte-input>
@@ -55,88 +52,29 @@
             </div>
             
            
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-select id="correto" name="cliente" label="Selecione aqui o cliente:">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
-                            </div>
-                        </x-slot>
-                
-                  
-                            
-                        <option value="{{$cliente->id}}" >{{$cliente->nome}}</option>
-                 
-                       
-              
-                    </x-adminlte-select>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-select id="correto" name="produto" label="Selecione aqui o produto para o serviço:">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
-                            </div>
-                        </x-slot>
-             
-             
-                            
-                        <option value="{{$produto->id}}" >{{$produto->nome}}</option>
-                    
-                  
-                       
-              
-                    </x-adminlte-select>
-                </div>
-            </div>
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-select id="correto" name="servico" label="Selecione o serviço:">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
-                            </div>
-                        </x-slot>
-                     
-                  
-                            
-                        <option value="{{$servico->id}}" >{{$servico->nome}}</option>
-                    
-           
-                       
-              
-                    </x-adminlte-select>
-                </div>
-            </div>
             <div class="col-12">
                 <div class="form-group">
-                    <x-adminlte-select id="correto" name="funcionario" label="Selecione o funcionário para a execução desse serviço:">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-heart text-yellow"></i>
-                            </div>
-                        </x-slot>
-                      
-                      
-                            
-                        <option value="{{$funcionario->id}}" >{{$funcionario->nome}}</option>
-                    
-                    
-                       
-              
-                    </x-adminlte-select>
+                    <x-adminlte-textarea name="descricao" disabled label="Descrição" rows=5 label-class="text-dark"
+                    igroup-size="sm" placeholder="Insert description...">
+                    <x-slot name="prependSlot">
+                        <div class="input-group-text bg-dark">
+                            <i class="fas fa-lg fa-file-alt text-warning"></i>
+                        </div>
+                    </x-slot>
+                    {{$servico->descricao}}
+                    </x-adminlte-textarea>
                 </div>
             </div>
+            
+            
+           
            
            
             
            
         </div>
         <div class="col-12 p-3">
-            <x-adminlte-button class="btn-flat float-right" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save"/>
+           
             <x-adminlte-button class="btn-flat float-right mr-3" type="button" label="Cancelar" id="cancelar" theme="danger" icon="fas fa-ban"/>
 
         </div>
@@ -147,11 +85,6 @@
 @stop
 @push('js')
 <script src="{{ asset('resources/jquery.mask.js') }}"></script>
-<script>
-    $(document).ready(function(){
-            $('.dinheiro').mask('000000.00', {reverse: true});
-        });
-</script>
 <script src="{{ asset('resources/requisicaoAjax.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>

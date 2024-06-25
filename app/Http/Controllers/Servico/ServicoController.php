@@ -16,6 +16,7 @@ class ServicoController extends Controller
      */
     public function index()
     {
+     
         return view('servico.index');
     }
 
@@ -63,13 +64,18 @@ class ServicoController extends Controller
 
 
     }
+    public function edit(Servico $servico)
+    {
+        return view('servico.edit',compact('servico'));
+    }
+
 
     /**
      * Display the specified resource.
      */
     public function show(Servico $servico)
     {
-        //
+       return view('servico.show',compact('servico'));
     }
 
     /**
@@ -77,7 +83,14 @@ class ServicoController extends Controller
      */
     public function update(Request $request, Servico $servico)
     {
-        //
+        $data = $request->validate([
+            'nome'=>"required|string",
+             'valor'=>"required|numeric",
+            'descricao'=>'required|string'
+        ]);
+        if($servico->update($data)){
+            return redirect()->route('servico.index');
+        }
     }
 
     /**

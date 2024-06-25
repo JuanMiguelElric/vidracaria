@@ -116,7 +116,7 @@
             <div class="col-3">
                 <div class="form-group">
                     <x-adminlte-input name="preco" placeholder="Preço do produto:"
-                    label="Preço do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->preco}}" >
+                    label="Preço do produto" class="dinheiro" icon="fas fa-bed" value="{{$produto->preco}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -131,7 +131,7 @@
             <div class="col-3">
                 <div class="form-group">
                     <x-adminlte-input name="unidadeMedida" placeholder="Unidade de Medida do produto:"
-                    label="Unidade de de Medida do produto" data-mask="00.00" icon="fas fa-bed" value="{{$produto->unidadeMedida}}" >
+                    label="Unidade de de Medida do produto" icon="fas fa-bed" value="{{$produto->unidadeMedida}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -170,6 +170,11 @@
 <script src="{{ asset('vendor\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.js') }}"></script>
 
 
+<script>
+    $(document).ready(function(){
+            $('.dinheiro').mask('000000.00', {reverse: true});
+        });
+</script>
 <script>
     $(document).ready(function(){
         $("[name='cep']").on("blur", function(){

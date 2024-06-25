@@ -106,6 +106,7 @@ $config = [
         </div>
 
         <div class="col-12 mt-3">
+           
 
             <x-adminlte-modal id="modalMin" title="Excluindo cliente">
              

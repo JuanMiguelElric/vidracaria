@@ -2,35 +2,56 @@
 
 @section('content_header')
 <div class="border-bottom pb-3">
-    <h3>Cadastrar produto</h3>
+    <h3>Editar Serviço</h3>
 </div>
 
 @endsection
 @section('content')
 <div class="container p-5">
-    <x-adminlte-card title="Registrar produto" theme="light" theme-mode="full" class="elevation-3 text-black"
+    <x-adminlte-card title="Editar Serviço" theme="light" theme-mode="full" class="elevation-3 text-black"
     body-class="bg-light" header-class="bg-dark" footer-class="bg-primary border-top rounded border-light"
      collapsible>
-    <form action="{{route('produto.store')}}" id="form" method="POST">
+     <form action="{{route('servico.update',$servico->id)}}" id="form" method="POST">
+        @method('PUT')
         @csrf
 
         <div class="row">
-            <div class="col-12">
+            
+            
+            
+
+            <div class="col-6">
                 <div class="form-group">
-                    <x-adminlte-input name="nome" placeholder="Informe aqui o nome do produto"
-                    label="Informe aqui o nome do produto" icon="fas fa-bed" value="{{ old('nome') }}" >
+                    <x-adminlte-input name="nome" placeholder="nome do serviço"
+                    label="Digite aqui o nome do serviço"  icon="fas fa-bed" value="{{$servico->nome}}" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
-                                <i class="fas fa-user text-yellow"></i>
+                                <i class="fab fa-servicestack text-yellow"></i>
                             </div>
                         </x-slot>
                     </x-adminlte-input>
   
     
                 </div>
-    
             </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <x-adminlte-input name="valor" placeholder="R$00.00:"
+                    label="Valor do serviço:" class="dinheiro" icon="fas fa-bed" value="{{$servico->valor}}" >
+
+                        <x-slot name="prependSlot">
+                            <div class="input-group-text bg-dark">
+                                <i class="fas fa-dollar-sign text-yellow"></i>
+                            </div>
+                        </x-slot>
+                    </x-adminlte-input>
+  
+    
+                </div>
+            </div>
+            
+           
             <div class="col-12">
                 <div class="form-group">
                     <x-adminlte-textarea name="descricao" label="Descrição" rows=5 label-class="text-dark"
@@ -40,109 +61,17 @@
                             <i class="fas fa-lg fa-file-alt text-warning"></i>
                         </div>
                     </x-slot>
+                    {{$servico->descricao}}
                     </x-adminlte-textarea>
-  
-    
                 </div>
-    
             </div>
             
-            <div class="col-6">
-                <div class="form-group">
-                    <x-adminlte-select2 name="fornecedor" label="Fornecedor:" label-class="text-Dark"
-                        data-placeholder="Select an option...">
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="far fa-building text-yellow"></i>
-                            </div>
-                        </x-slot>
-                       <option selected>Escolha aqui um fornecedor </option> 
-                        @foreach ($fornecedor as $fornecedo)
-                        <option value="{{$fornecedo->id}}">{{$fornecedo->nome}}</option>
-                            
-                        @endforeach
-             
-                    </x-adminlte-select2>
-
-    
-                </div>
-    
-            </div>
-            
-            
-            <div class="col-6">
-                <div class="form-group">
-                    <label for="">Data da Compra:</label>
-                    
-                    <input type="date" class="form-control" name="dataCompra"  />
-                </div>
-             
-            </div>
             
            
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="categoria" placeholder="Categoria do produto"
-                    label="Categoria do produto:" icon="fas fa-bed" value="{{ old('nome') }}" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-user text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-                </div>
-            </div>
            
            
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="qtdProduto" placeholder="Quantidade do produto:"
-                    label="Quantidade do produto:" data-mask="000000000" icon="fas fa-bed" value="" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-plus-square text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
             
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="preco" placeholder="Preço do produto:"
-                    label="Preço do produto" class="dinheiro" icon="fas fa-bed" value="" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fas fa-dollar-sign text-yellow"></i>
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group">
-                    <x-adminlte-input name="unidadeMedida" placeholder="Unidade de Medida do produto:"
-                    label="Unidade de de Medida do produto"  icon="fas fa-bed" value="" >
-
-                        <x-slot name="prependSlot">
-                            <div class="input-group-text bg-dark">
-                                <i class="fab fa-medium text-yellow"></i>
-                        
-                            </div>
-                        </x-slot>
-                    </x-adminlte-input>
-    
-    
-                </div>
-            </div>
-            
+           
         </div>
         <div class="col-12 p-3">
             <x-adminlte-button class="btn-flat float-right" type="submit" label="Submit" theme="success" icon="fas fa-lg fa-save"/>
@@ -156,6 +85,12 @@
 @stop
 @push('js')
 <script src="{{ asset('resources/jquery.mask.js') }}"></script>
+
+<script>
+    $(document).ready(function(){
+            $('.dinheiro').mask('000000.00', {reverse: true});
+        });
+</script>
 <script src="{{ asset('resources/requisicaoAjax.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
@@ -168,16 +103,6 @@
 <script src="{{ asset('vendor\tempusdominus-bootstrap-4\js\tempusdominus-bootstrap-4.js') }}"></script>
 
 
-
-
-    
-
-
-<script>
-    $(document).ready(function(){
-            $('.dinheiro').mask('000000.00', {reverse: true});
-        });
-</script>
 <script>
     $(document).ready(function(){
         $("[name='cep']").on("blur", function(){

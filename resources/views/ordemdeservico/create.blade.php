@@ -40,7 +40,7 @@
             <div class="col-6">
                 <div class="form-group">
                     <x-adminlte-input name="valor" placeholder="R$00.00:"
-                    label="Valor da conclusão:" data-mask="00.00" icon="fas fa-bed" value="" >
+                    label="Valor da conclusão:" class="dinheiro" icon="fas fa-bed" value="" >
 
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
@@ -147,6 +147,11 @@
 @stop
 @push('js')
 <script src="{{ asset('resources/jquery.mask.js') }}"></script>
+<script>
+    $(document).ready(function(){
+            $('.dinheiro').mask('000000.00', {reverse: true});
+        });
+</script>
 <script src="{{ asset('resources/requisicaoAjax.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('vendor/adminlte/dist/js/adminlte.min.js') }}"></script>
