@@ -86,9 +86,13 @@ class OrdemdesericosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrdemServico $ordemServico)
+    public function show(OrdemServico $ordemdeservico)
     {
-        //
+        $cliente = Cliente::findOrFail($ordemdeservico->cliente);
+        $funcionario = Funcionario::findOrFail($ordemdeservico->funcionario);
+        $produto = Produto::findOrFail($ordemdeservico->produto);
+        $servico = Servico::findOrFail($ordemdeservico->servico);
+        return view('ordemdeservico.show',compact(['ordemdeservico','cliente','funcionario','produto','servico']));
     }
 
     /**
