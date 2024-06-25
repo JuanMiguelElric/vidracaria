@@ -6,7 +6,7 @@ use App\Models\Servico;
 use App\Http\Controllers\Controller;
 use App\Models\cliente\Cliente;
 use App\Models\Funcionario;
-use App\Models\Produto;
+
 use Illuminate\Http\Request;
 
 class ServicoController extends Controller
@@ -35,6 +35,31 @@ class ServicoController extends Controller
         if($servico->save()){
             return redirect()->route('servico.index');
         }
+
+    }
+    public function ServicoJson(){
+        $servicos = Servico::all();
+        $servicoList=[];
+        foreach($servicos as $servico){
+            $routeEdit = route('servico.edit', $servico->id);
+            $routeQuartos = route('servico.index',);
+            $routedetalhes = route('servico.show', $servico->id);
+            $btnEdit = "<a href=' $routeEdit' id='$servico->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
+            
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $servico->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            
+            $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $servico->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
+
+            $servicoList[]=[
+
+                "nome"=>$servico->nome,
+                "valor"=>$servico->valor,
+                'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
+            ];
+
+        }
+        return response()->json(compact('servicoList'));
+
 
     }
 

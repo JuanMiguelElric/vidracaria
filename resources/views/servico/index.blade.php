@@ -1,29 +1,23 @@
 @extends('adminlte::page')
-@section('title', 'Produto')
+@section('title', 'Serviço')
 
 @section('content')
 @php
 $heads = [
-    'Nome do Cliente',
-    'Categoria',
-    'Data da Compra',
-    'QTD',
+    'Nome do Serviço',
     'Preço',
     ['label' => 'Actions', 'no-export' => true, 'width' => 5],
 ];
 $config = [
     'ajax'=>[
-        'url'=>"/produtojson",
-        'dataSrc'=>"produtoList",
+        'url'=>"/servicolist",
+        'dataSrc'=>"servicoList",
     ],
     'data'=>[],
     'order'=>[[0,'asc']],
     'columns'=>[
         ['data'=>'nome'],
-        ['data'=>'categoria'],
-        ['data'=>'dataCompra'],
-        ['data'=>'qtdProduto'],
-        ['data'=>'preco'],
+        ['data'=>'valor'],
         ['data'=>'btna']
 ],
 
