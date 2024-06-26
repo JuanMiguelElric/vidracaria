@@ -8,6 +8,7 @@ use App\Models\cliente\Cliente;
 use App\Models\Funcionario;
 use App\Models\Produto;
 use App\Models\Servico;
+use DateTime;
 use Illuminate\Http\Request;
 
 class OrdemdesericosController extends Controller
@@ -36,6 +37,8 @@ class OrdemdesericosController extends Controller
         $ordemdeServicos = OrdemServico::all();
         $ordemdeServicoList =[];
         foreach($ordemdeServicos as $ordemdeservico){
+            $cliente = Cliente::where('id',$ordemdeservico->cliente)->first();
+            $servico = Servico::where('id',$ordemdeservico->servico)->first();
             $routeEdit = route('ordemdeservico.edit', $ordemdeservico->id);
             $routeQuartos = route('ordemdeservico.index',);
             $routedetalhes = route('ordemdeservico.show', $ordemdeservico->id);
@@ -44,12 +47,18 @@ class OrdemdesericosController extends Controller
             $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$ordemdeservico->id.'" title="Excluir" data-dado-id="'.$ordemdeservico->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $ordemdeservico->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
+            $dataServicoObject = new DateTime($ordemdeservico->dataServico);
+            $dataServicoObject1 = new DateTime($ordemdeservico->prazo);
 
+     
+            
             $ordemdeServicoList[]=[
 
-                'dataServico'=>$ordemdeservico->dataServico,
-                'prazo'=>$ordemdeservico->prazo,
-                'valor'=>$ordemdeservico->valor,
+                'dataServico'=>$formattedDate = $dataServicoObject->format('d-m-Y'),
+                'prazo'=>   $formattedDate1 = $dataServicoObject->format('d-m-Y'),
+                'valor'=>"R$ ". $ordemdeservico->valor,
+                'servico'=>$servico->nome,
+                'descricao'=>$cliente->nome,
                 'ativo'=>$ordemdeservico->ativo == 0 ? "ativo" : "inativo",
                 'btna'=> '<nobr>' . $btnEdit . $btnDelete . $btnDetails . '</nobr>'
 

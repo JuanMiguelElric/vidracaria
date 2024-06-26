@@ -4,6 +4,8 @@
 @section('content')
 @php
 $heads = [
+    'Cliente',
+    'Serviço',
     'Data inicial',
     'Prazo',
     'valor',
@@ -18,6 +20,8 @@ $config = [
     'data'=>[],
     'order'=>[[0,'asc']],
     'columns'=>[
+        ['data'=>'descricao'],
+        ['data'=>'servico'],
         ['data'=>'dataServico'],
         ['data'=>'prazo'],
         ['data'=>'valor'],

@@ -247,11 +247,33 @@
         $('#form').validate({
             rules: {
                 nome: "required",
-     
+               
+            
+                cnpj:"required",
+                endereco:"required",
+                telefone:"required",
+                email:"required",
+                cep:"required",
+                rua:"required",
+                estado:"required",
+                cidade:"required",
+                complemento:"required"
+
+                     
                 
             },
             messages: {
                 nome: campoRequired,
+           
+                cnpj:campoRequired,
+                endereco:campoRequired,
+                telefone:campoRequired,
+                email:campoRequired,
+                cep:campoRequired,
+                rua:campoRequired,
+                estado:campoRequired,
+                cidade:campoRequired,
+                complemento:campoRequired,
       
 
             },

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Produto;
 use App\Models\Produto;
 use App\Http\Controllers\Controller;
 use App\Models\Fornecedor;
+use DateTime;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\returnSelf;
@@ -64,11 +65,12 @@ class ProdutoController extends Controller
             $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$produto->id.'" title="Excluir" data-dado-id="'.$produto->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $produto->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
-
+            $dataServicoObject = new DateTime($produto->dataCompra);
+            
             $produtoList[]=[
                 'nome'=>$produto->nome,
                 'categoria'=>$produto->categoria,
-                'dataCompra'=>$produto->dataCompra,
+                'dataCompra'=>$formattedDate = $dataServicoObject->format('d-m-Y'),
                 'qtdProduto'=>$produto->qtdProduto,
                 'preco'=>$produto->preco,
                 'ativo'=>$produto->ativo == 0 ? "ativo" : "inativo",
