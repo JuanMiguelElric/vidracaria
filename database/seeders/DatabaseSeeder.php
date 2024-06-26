@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
+       /* DB::table('users')->insert([
             [
                 'name' => 'John Doe',
                 'email' => 'johndoe@example.com',
@@ -31,6 +31,15 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+        ]);
+        */
+        $this->call([
+          //  EnderecoSeeder::class,
+            //ClienteSeeder::class,
+         //   FornecedorSeeder::class,
+          //  FuncionarioSeeder::class,
+            ProdutoSeeder::class,
+            OrcamentoSeeder::class,
         ]);
     
     }
