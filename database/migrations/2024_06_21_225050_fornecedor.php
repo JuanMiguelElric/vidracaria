@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('fornecedor', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 60);
-            $table->char('cnpj', 20);
-            $table->integer('endereco')->unsigned();
+            $table->char('cnpj', 26);
+            $table->unsignedBigInteger('endereco')->nullable();
             $table->string('telefone', 14);
             $table->string('email', 30)->nullable();
             $table->timestamps();
 
-            $table->foreign('endereco')->references('UniqueID')->on('endereco');
+            $table->foreign('endereco')->references('id')->on('endereco');
         });
     }
 

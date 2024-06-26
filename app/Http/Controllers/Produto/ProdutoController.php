@@ -16,7 +16,8 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        return view('produto.index');
+        $produtos= Produto::all();
+        return view('produto.index',compact('produtos'));
     }
     public function create()
     {
@@ -60,7 +61,7 @@ class ProdutoController extends Controller
             $routedetalhes = route('produto.show', $produto->id);
             $btnEdit = "<a href=' $routeEdit' id='$produto->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
             
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $produto->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$produto->id.'" title="Excluir" data-dado-id="'.$produto->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $produto->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
 

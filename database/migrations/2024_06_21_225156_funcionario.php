@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 100)->nullable();
             $table->date('dataNascimento')->nullable();
-            $table->string('cpf', 14)->unique()->nullable();
-            $table->string('endereco', 255)->nullable();
+            $table->string('cpf', 20)->unique()->nullable();
+            $table->unsignedBigInteger('endereco')->nullable();
             $table->string('telefone', 15)->nullable();
             $table->string('email', 100)->nullable();
             $table->string('funcao', 100)->nullable();

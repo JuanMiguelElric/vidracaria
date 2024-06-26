@@ -14,30 +14,30 @@ return new class extends Migration
         Schema::create('produto', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 50);
-            $table->integer('fornecedor')->unsigned();
+            $table->unsignedBigInteger('fornecedor')->unsigned()->nullable();
             $table->string('descricao', 100);
             $table->char('categoria', 10);
             $table->date('dataCompra');
-            $table->integer('qtdProduto');
+            $table->unsignedBigInteger('qtdProduto');
             $table->decimal('preco', 10, 2);
             $table->string('unidadeMedida', 20)->nullable();
             $table->timestamps();
 
-            $table->foreign('fornecedor')->references('UniqueID')->on('fornecedor');
+            $table->foreign('fornecedor')->references('id')->on('fornecedor');
         });
         Schema::create('orcamento', function (Blueprint $table) {
             $table->id();
-            $table->integer('cliente')->unsigned();
-            $table->integer('produto')->unsigned()->nullable();
+            $table->unsignedBigInteger('cliente')->nullable();
+            $table->unsignedBigInteger('produto')->nullable();
             $table->char('formaPagamento', 8);
             $table->decimal('valor', 10, 2);
             $table->date('dataPedido');
             $table->integer('qtdProduto')->nullable();
-            $table->integer('servico')->unsigned()->nullable();
+            $table->integer('servico')->nullable();
             $table->timestamps();
 
-            $table->foreign('cliente')->references('UniqueID')->on('cliente');
-            $table->foreign('produto')->references('UniqueID')->on('produto');
+            $table->foreign('cliente')->references('id')->on('cliente');
+            $table->foreign('produto')->references('id')->on('produto');
         });
 
     }

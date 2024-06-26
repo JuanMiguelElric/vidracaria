@@ -16,8 +16,9 @@ class ServicoController extends Controller
      */
     public function index()
     {
+        $servicos = Servico::all();
      
-        return view('servico.index');
+        return view('servico.index',compact('servicos'));
     }
 
 
@@ -47,7 +48,7 @@ class ServicoController extends Controller
             $routedetalhes = route('servico.show', $servico->id);
             $btnEdit = "<a href=' $routeEdit' id='$servico->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
             
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $servico->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$servico->id.'" title="Excluir" data-dado-id="'.$servico->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $servico->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
 
@@ -98,6 +99,8 @@ class ServicoController extends Controller
      */
     public function destroy(Servico $servico)
     {
-        //
+       if($servico->delete()){
+         return redirect()->route('servico.index');
+       }
     }
 }

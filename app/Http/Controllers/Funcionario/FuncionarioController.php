@@ -39,6 +39,7 @@ class FuncionarioController extends Controller
         $dataEndereco = $request->validate(
             ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
         );
+ 
 
 
    

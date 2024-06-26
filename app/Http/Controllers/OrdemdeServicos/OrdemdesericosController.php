@@ -17,7 +17,8 @@ class OrdemdesericosController extends Controller
      */
     public function index()
     {
-        return view('ordemdeservico.index');
+        $ordemdeservicos = OrdemServico::all();
+        return view('ordemdeservico.index',compact('ordemdeservicos'));
     }
     public function create(){
         $cliente = Cliente::all();
@@ -40,7 +41,7 @@ class OrdemdesericosController extends Controller
             $routedetalhes = route('ordemdeservico.show', $ordemdeservico->id);
             $btnEdit = "<a href=' $routeEdit' id='$ordemdeservico->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
             
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $ordemdeservico->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$ordemdeservico->id.'" title="Excluir" data-dado-id="'.$ordemdeservico->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $ordemdeservico->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
 

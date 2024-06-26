@@ -16,10 +16,10 @@ return new class extends Migration
             $table->date('dataServico')->nullable();
             $table->date('prazo')->nullable();
             $table->float('valor')->nullable();
-            $table->unsignedInteger('servico')->nullable();
-            $table->unsignedInteger('funcionario')->nullable();
-            $table->unsignedInteger('cliente')->nullable();
-            $table->unsignedInteger('produto')->nullable();
+            $table->unsignedBigInteger('servico')->nullable();
+            $table->unsignedBigInteger('funcionario')->nullable();
+            $table->unsignedBigInteger('cliente')->nullable();
+            $table->unsignedBigInteger('produto')->nullable();
             $table->foreign('funcionario')->references('id')->on('funcionario');
             $table->foreign('servico')->references('id')->on('servico');
             $table->foreign('cliente')->references('id')->on('cliente');

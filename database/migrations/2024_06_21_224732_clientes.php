@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('endereco', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('rua', 50);
             $table->string('numero', 20);
             $table->char('estado', 2);
@@ -21,18 +21,18 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('cliente', function (Blueprint $table) {
-            $table->increments('UniqueID');
+            $table->id();
             $table->string('nome', 60);
             $table->string('sexo', 10);
             $table->date('dataNascimento');
-            $table->char('cpf', 11);
-            $table->integer('endereco')->unsigned();
+            $table->char('cpf', 20);
+            $table->unsignedBigInteger('endereco')->nullable();
             $table->string('telefone', 14);
             $table->string('email', 30)->nullable();
             $table->enum('status', ['ativo', 'inativo'])->default('ativo')->nullable();
             $table->timestamps();
 
-            $table->foreign('endereco')->references('UniqueID')->on('endereco');
+            $table->foreign('endereco')->references('id')->on('endereco');
         });
     }
 

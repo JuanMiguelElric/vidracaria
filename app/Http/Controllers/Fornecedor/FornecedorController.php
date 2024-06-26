@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class FornecedorController extends Controller
 {
     public function index(){
-        return view('fornecedor.index');
+        $fornecedores = Fornecedor::all();
+        return view('fornecedor.index',compact('fornecedores'));
     }
     public function create(){
         return view('fornecedor.create');
@@ -51,7 +52,7 @@ class FornecedorController extends Controller
             $routedetalhes = route('fornecedor.show', $fornecedor->id);
             $btnEdit = "<a href=' $routeEdit' id='$fornecedor->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
             
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $fornecedor->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$fornecedor->id.'" title="Excluir" data-dado-id="'.$fornecedor->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $fornecedor->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
 
@@ -91,21 +92,13 @@ class FornecedorController extends Controller
         }
 
     }
-    public function Destroy(Request $request,Fornecedor $fornecedor){
-        $data = $request->validate([
-            'nome'=>'required|string',
-            'cnpj'=>'required|string',
-            'telefone'=>'required|string',
-            'email'=>'required|string'
-            
-        ]);
-        $dataEndereco = $request->validate(
-            ['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']
-        );
+    public function destroy(Fornecedor $fornecedor){
+     
+
         $endereco = Endereco::findOrFail($fornecedor->endereco);
 
-        if($fornecedor->destroy($data)){
-            if($endereco->destroy($dataEndereco)){
+        if($fornecedor->delete()){
+            if($endereco->delete()){
                 return redirect()->route('fornecedor.index');
             }
         }

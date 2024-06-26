@@ -42,11 +42,18 @@ $config = [
 
         <div class="col-12 mt-3">
 
-            <x-adminlte-modal id="modalMin" title="Excluindo Fornecedor">
-             
-
+            @foreach ($fornecedores as $fornecedor)
+            <x-adminlte-modal id="modal{{ $fornecedor->id }}" title="Excluindo fornecedor {{ $fornecedor->nome }}">
+                <form action="{{ route('fornecedor.destroy', $fornecedor->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <i class="fas fa-lg fa-exclamation-circle"></i>
+                    <button type="submit" class="btn btn-link">
+                        <i class="fa fa-md fa-fw fa-trash text-dark"></i>
+                    </button>
+                </form>
             </x-adminlte-modal>
-            
+        @endforeach
             
             <x-adminlte-datatable id="table2" :heads="$heads" :config="$config" head-theme="dark" striped hoverable compessed with-buttons />
         </div>

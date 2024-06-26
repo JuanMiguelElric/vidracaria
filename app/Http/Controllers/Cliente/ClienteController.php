@@ -11,8 +11,8 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        $cliente = Cliente::all();
-        return view('cliente.index',compact('cliente'));
+        $clientes = Cliente::all();
+        return view('cliente.index',compact('clientes'));
     }
     public function create(){
         return view('cliente.create');
@@ -30,8 +30,7 @@ class ClienteController extends Controller
             $routedetalhes = route('cliente.show', $cliente->id);
             $btnEdit = "<a href=' $routeEdit' id='$cliente->id' class='btn btn-xs btn-default text-primary mx-1 shadow' title='Editar'><i class='fa fa-lg fa-fw fa-pen'></i></a>";
             
-            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modalMin" title="Excluir" data-dado-id="' . $cliente->id . '"><i class="fa fa-lg fa-fw fa-trash"></i></button>';
-            
+            $btnDelete = '<button class="btn btn-xs btn-default text-danger mx-1 shadow excluir-dado btn-delete" data-toggle="modal" data-target="#modal'.$cliente->id.'" title="Excluir" data-dado-id="'.$cliente->id.'"><i class="fa fa-lg fa-fw fa-trash"></i></button>';  
             $btnDetails = '<a href="'.$routedetalhes.'" class="btn btn-xs btn-default text-teal mx-1 shadow show-dado" data-dado-id="' . $cliente->id . '" title="todos usuarios"><i class="fas fa-fw fa-user" aria-hidden="true"></i></a>';
          
             $clientesList[]=[
@@ -104,19 +103,10 @@ class ClienteController extends Controller
         }
     }
     public function destroy(Request $request, Cliente $cliente){
-        $data = $request->validate([
-            'nome'=>"required|string",
-            'sexo'=>"required|string",
-            'dataNascimento'=>'required|string',
-            'cpf'=>"required|string",
-            'email'=>"required|string",
-            'telefone'=>"required|string"
-         
-        ]);
-        $data3 = $request->validate(['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']);
+
         $endereco = Endereco::findOrFail($cliente->endereco);
-        if($cliente->destroy($data)){
-            if( $endereco->destroy($data3)){
+        if($cliente->delete()){
+            if( $endereco->delete()){
                 return redirect()->route('cliente.index');
 
             }
