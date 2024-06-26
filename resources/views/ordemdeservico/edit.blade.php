@@ -130,6 +130,14 @@
                     </x-adminlte-select>
                 </div>
             </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" name="ativo" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                     Caso estiver inativo clique aqui
+                    </label>
+                  </div>
+            </div>
            
            
             

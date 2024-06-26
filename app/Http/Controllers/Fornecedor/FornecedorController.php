@@ -78,7 +78,8 @@ class FornecedorController extends Controller
             'nome'=>'required|string',
             'cnpj'=>'required|string',
             'telefone'=>'required|string',
-            'email'=>'required|string'
+            'email'=>'required|string',
+             'ativo'=>"nullable|numeric"
             
         ]);
         $dataEndereco = $request->validate(

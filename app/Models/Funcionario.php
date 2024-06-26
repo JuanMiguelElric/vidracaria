@@ -19,7 +19,8 @@ class Funcionario extends Model
         'endereco',
         'telefone',
         'email',
-        'funcao'
+        'funcao',
+           'ativo'
     ];
     public function endereco():BelongsTo
     {

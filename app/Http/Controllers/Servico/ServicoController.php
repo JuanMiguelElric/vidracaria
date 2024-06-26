@@ -87,7 +87,8 @@ class ServicoController extends Controller
         $data = $request->validate([
             'nome'=>"required|string",
              'valor'=>"required|numeric",
-            'descricao'=>'required|string'
+            'descricao'=>'required|string',
+             'ativo'=>"nullable|numeric"
         ]);
         if($servico->update($data)){
             return redirect()->route('servico.index');

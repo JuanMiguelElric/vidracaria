@@ -86,7 +86,8 @@ class ClienteController extends Controller
             'dataNascimento'=>'required|string',
             'cpf'=>"required|string",
             'email'=>"required|string",
-            'telefone'=>"required|string"
+            'telefone'=>"required|string",
+            'ativo'=>"nullable|numeric"
          
         ]);
         $data3 = $request->validate(['cep'=>'nullable|string|max:255','cidade'=>'nullable|string|max:255','rua'=>'nullable|string|max:255','bairro'=>'nullable|string|max:255', 'estado'=>'nullable|string|max:255','complemento'=>'nullable', 'numero'=>'nullable']);

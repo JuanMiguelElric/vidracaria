@@ -18,7 +18,8 @@ class OrdemServico extends Model
             'servico',
             'funcionario',
             'cliente',
-            'produto'
+            'produto',
+               'ativo'
     ];
     public function funcionario():BelongsTo
     {

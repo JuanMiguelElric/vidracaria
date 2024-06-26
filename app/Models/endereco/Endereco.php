@@ -20,7 +20,8 @@ class Endereco extends Model
         'estado',
         'cidade',
         'cep',
-        'complemento'
+        'complemento',
+           'ativo'
     ];
 
     public function clientes():HasMany

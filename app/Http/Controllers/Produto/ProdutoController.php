@@ -112,6 +112,7 @@ class ProdutoController extends Controller
     
             'unidadeMedida'=>'required|string',
             'preco'=>'required|numeric',
+             'ativo'=>"nullable|numeric"
         ]);
 
         if($produto->update($data)){

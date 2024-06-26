@@ -13,7 +13,8 @@ class Servico extends Model
     protected $fillable =[
         'nome',
         'descricao',
-        'valor'
+        'valor',
+           'ativo'
     ];
     public function ordemdesericos():HasMany
     {

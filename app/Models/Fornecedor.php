@@ -17,7 +17,8 @@ class Fornecedor extends Model
         'cnpj',
         'endereco',
         'telefone',
-        'email'
+        'email',
+           'ativo'
     ];
     public function endereco():BelongsTo
     {

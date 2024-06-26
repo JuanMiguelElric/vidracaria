@@ -95,7 +95,7 @@
             <div class="col-4">
                 <div class="form-group">
                     <x-adminlte-input name="cep" placeholder="Informe o CEP do seu Fornecedor:"
-                    label="Informe aqui o CEP do Fornecedor" data-mask="00000-000" icon="fas fa-bed" value="{{ old('cep') }}">
+                    label="Informe aqui o CEP do Fornecedor" data-mask="00000-000" icon="fas fa-bed" value="{{  $endereco->cep }}">
                         <x-slot name="prependSlot">
                             <div class="input-group-text bg-dark">
                                 <i class="fas fa-city text-yellow"></i>
@@ -176,7 +176,14 @@
                     </x-adminlte-input>
                 </div>
             </div>
-        
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" name="ativo" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                     Caso estiver inativo clique aqui
+                    </label>
+                  </div>
+            </div>
         
     </div>
         <div class="col-12 p-3">

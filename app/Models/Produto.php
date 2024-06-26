@@ -24,6 +24,7 @@ class Produto extends Model
         'qtdProduto',
         'preco',
         'unidadeMedida',
+           'ativo'
 
     ];
 

@@ -21,7 +21,8 @@ class Cliente extends Model
             'cpf',
             'endereco',
             'email',
-            'status','telefone'
+            'status','telefone',
+            'ativo'
         
 
     ];

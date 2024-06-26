@@ -108,7 +108,8 @@ class OrdemdesericosController extends Controller
             'servico'=>"required|integer",
             'funcionario'=>"required|integer",
             'cliente'=>"required|integer",
-            'produto'=>"required|integer"
+            'produto'=>"required|integer",
+             'ativo'=>"nullable|numeric"
         ]);
 
         if($ordemdeservico->update($data)){
