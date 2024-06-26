@@ -157,6 +157,9 @@
 <script src="{{ asset('resources/jquery.mask.js') }}"></script>
 <script>
     $(document).ready(function(){
+        $('#cancelar').click(function(){
+            window.history.back();
+            });
             $('.dinheiro').mask('000000.00', {reverse: true});
         });
 </script>

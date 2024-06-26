@@ -234,6 +234,9 @@
 
 <script>
     $(document).ready(function(){
+        $('#cancelar').click(function(){
+            window.history.back();
+            });
         $("[name='cep']").on("blur", function(){
             var cep = $(this).val().replace(/\D/g, '');
 

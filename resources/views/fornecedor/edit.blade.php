@@ -243,6 +243,9 @@
 </script>
 <script>
     $(document).ready(function(){
+        $('#cancelar').click(function(){
+            window.history.back();
+            });
         const campoRequired = "Por favor, preencha este campo:";
         $('#form').validate({
             rules: {
